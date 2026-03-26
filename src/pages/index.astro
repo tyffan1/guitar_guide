@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Hero } from "../components/Hero";
+---
+
+<BaseLayout
+  title="Guitar Guide"
+  description="Стартовый шаблон сайта на Astro, React и Framer Motion"
+>
+  <main class="page-shell">
+    <Hero client:load />
+  </main>
+</BaseLayout>
