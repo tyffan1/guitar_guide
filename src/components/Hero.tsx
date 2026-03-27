@@ -4,7 +4,27 @@ import { useRef, useState } from "react";
 const sections = [
   { id: "block-1", label: "01", tone: "sun" },
   { id: "block-2", label: "02", tone: "forest" },
-  { id: "block-3", label: "03", tone: "night" }
+  { id: "block-3", label: "03", tone: "night" },
+  { id: "block-4", label: "04", tone: "sun" }
+] as const;
+
+const guitarHistory = [
+  {
+    period: "Древние корни",
+    text: "Предками гитары считают лютню, уд и другие щипковые инструменты, которые существовали на Ближнем Востоке и в Европе задолго до появления современного корпуса."
+  },
+  {
+    period: "XVI-XVIII века",
+    text: "В Испании и Италии сформировались ранние формы гитары с несколькими струнами и более компактным корпусом. Инструмент постепенно стал частью бытовой и придворной музыки."
+  },
+  {
+    period: "XIX век",
+    text: "Мастер Антонио Торрес сильно повлиял на форму классической гитары: увеличил корпус, уточнил пропорции и сделал звучание более глубоким и устойчивым."
+  },
+  {
+    period: "XX век и дальше",
+    text: "Появились акустические и электрогитары, а вместе с ними новые жанры: блюз, рок, джаз, метал, поп и огромное количество гибридных направлений."
+  }
 ] as const;
 
 export function Hero() {
@@ -235,7 +255,9 @@ export function Hero() {
                   ref={(element) => {
                     slideRefs.current[index] = element;
                   }}
-                  className={`stage-slider__slide stage stage--${section.tone}`}
+                  className={`stage-slider__slide stage stage--${section.tone} ${
+                    index === 0 ? "stage--article" : ""
+                  }`}
                   initial={{ opacity: 0, y: 60 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.45 }}
@@ -250,7 +272,55 @@ export function Hero() {
                   <div className="stage__meta">
                     <span className="stage__number">{section.label}</span>
                   </div>
+
+                  {index === 0 ? (
+                    <div className="stage__article">
+                      <div className="stage__article-intro">
+                        <span className="stage__label">Что Такое Гитара</span>
+                        <h2>Гитара - один из самых узнаваемых инструментов в мире.</h2>
+                        <p>
+                          Гитара - это струнный щипковый музыкальный инструмент,
+                          на котором играют пальцами или медиатором. Она может
+                          быть акустической, классической или электрической, но
+                          во всех вариантах остаётся инструментом, который
+                          соединяет мелодию, ритм и гармонию в одном корпусе.
+                        </p>
+                        <p>
+                          Её ценят за универсальность: гитара подходит и для
+                          камерной игры дома, и для больших сцен, и для
+                          обучения, и для профессиональной записи. Именно
+                          поэтому она стала одним из самых популярных
+                          инструментов в истории музыки.
+                        </p>
+                      </div>
+
+                      <div className="stage__article-grid">
+                        <div className="stage__article-card">
+                          <h3>Почему гитара так популярна</h3>
+                          <ul>
+                            <li>её удобно использовать как сольный инструмент;</li>
+                            <li>она подходит для аккомпанемента и написания песен;</li>
+                            <li>на ней играют в классике, роке, джазе, блюзе и поп-музыке;</li>
+                            <li>существует много форм и техник игры под разный стиль.</li>
+                          </ul>
+                        </div>
+
+                        <div className="stage__article-card">
+                          <h3>Краткая история развития</h3>
+                          <div className="stage__timeline">
+                            {guitarHistory.map((item) => (
+                              <article key={item.period} className="stage__timeline-item">
+                                <span>{item.period}</span>
+                                <p>{item.text}</p>
+                              </article>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
                   <div className="stage__empty" />
+                  )}
                 </motion.section>
               ))}
             </div>
