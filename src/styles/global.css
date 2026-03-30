@@ -74,37 +74,6 @@ a {
   text-transform: uppercase;
 }
 
-.site-header__nav {
-  display: inline-flex;
-  gap: 8px;
-}
-
-.site-header__nav a,
-.site-header__nav button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0 14px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  color: var(--muted);
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease;
-}
-
-.site-header__nav a:hover,
-.site-header__nav button:hover {
-  color: var(--text);
-  border-color: var(--line);
-  background: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
-}
-
 .hero {
   display: grid;
   gap: 32px;
@@ -348,6 +317,257 @@ a {
   line-height: 1.7;
 }
 
+.stage__anatomy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 28px;
+  min-height: calc(100vh - 294px);
+  margin-top: 22px;
+}
+
+.stage__anatomy-intro {
+  display: grid;
+  gap: 14px;
+}
+
+.stage__anatomy-intro h2 {
+  margin: 0;
+  max-width: 11ch;
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.stage__anatomy-intro p {
+  max-width: 54rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.stage__anatomy-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.stage__diagram-card,
+.stage__anatomy-side {
+  display: grid;
+  gap: 18px;
+}
+
+.stage__diagram-card {
+  min-height: 100%;
+  padding: 24px;
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(252, 248, 243, 0.92)),
+    radial-gradient(circle at top left, rgba(214, 181, 130, 0.12), transparent 32%);
+  backdrop-filter: blur(10px);
+}
+
+.guitar-diagram {
+  position: relative;
+  min-height: 780px;
+}
+
+.guitar-diagram__svg {
+  display: block;
+  width: min(100%, 332px);
+  height: auto;
+}
+
+.guitar-diagram__callout {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.35;
+  box-shadow: 0 18px 34px rgba(69, 39, 20, 0.08);
+}
+
+.guitar-diagram__callout span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(198, 97, 47, 0.14);
+  color: var(--brand-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.guitar-diagram__callout::after {
+  content: "";
+  position: absolute;
+  background: rgba(31, 26, 23, 0.16);
+}
+
+.guitar-diagram__callout--head {
+  top: 72px;
+  left: 258px;
+}
+
+.guitar-diagram__callout--head::after {
+  top: 22px;
+  right: 100%;
+  width: 92px;
+  height: 1px;
+}
+
+.guitar-diagram__callout--neck {
+  top: 228px;
+  left: 272px;
+}
+
+.guitar-diagram__callout--neck::after {
+  top: 22px;
+  right: 100%;
+  width: 122px;
+  height: 1px;
+}
+
+.guitar-diagram__callout--body {
+  top: 394px;
+  left: 276px;
+}
+
+.guitar-diagram__callout--body::after {
+  top: 22px;
+  right: 100%;
+  width: 142px;
+  height: 1px;
+}
+
+.guitar-diagram__callout--hole {
+  top: 554px;
+  left: 262px;
+}
+
+.guitar-diagram__callout--hole::after {
+  top: 22px;
+  right: 100%;
+  width: 128px;
+  height: 1px;
+}
+
+.guitar-diagram__callout--bridge {
+  top: 684px;
+  left: 220px;
+}
+
+.guitar-diagram__callout--bridge::after {
+  top: 22px;
+  right: 100%;
+  width: 96px;
+  height: 1px;
+}
+
+.anatomy-list {
+  display: grid;
+  gap: 14px;
+}
+
+.anatomy-list__item {
+  display: grid;
+  gap: 6px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(31, 26, 23, 0.08);
+}
+
+.anatomy-list__item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.anatomy-list__item h4,
+.sound-flow__steps li::marker {
+  color: var(--text);
+}
+
+.anatomy-list__item h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.anatomy-list__item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.stage__flow-card {
+  align-content: start;
+}
+
+.sound-flow {
+  position: relative;
+  min-height: 120px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 12% 50%, rgba(198, 97, 47, 0.12), transparent 16%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 248, 241, 0.88));
+  overflow: hidden;
+}
+
+.sound-flow__string {
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  right: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(95, 115, 87, 0.4), rgba(198, 97, 47, 0.7), rgba(95, 115, 87, 0.4));
+}
+
+.sound-flow__wave {
+  position: absolute;
+  top: 50%;
+  width: 88px;
+  height: 44px;
+  border: 2px solid rgba(198, 97, 47, 0.38);
+  border-color: rgba(198, 97, 47, 0.38) transparent transparent transparent;
+  border-radius: 50%;
+  transform: translateY(-50%) rotate(8deg);
+}
+
+.sound-flow__wave--one {
+  left: 18%;
+}
+
+.sound-flow__wave--two {
+  left: 42%;
+  width: 112px;
+  height: 58px;
+}
+
+.sound-flow__wave--three {
+  left: 68%;
+  width: 132px;
+  height: 70px;
+}
+
+.sound-flow__steps {
+  margin: 16px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
 .stage-slider {
   display: grid;
   gap: 22px;
@@ -498,13 +718,6 @@ a {
     letter-spacing: 0.06em;
   }
 
-  .site-header__nav a,
-.site-header__nav button {
-    min-width: 38px;
-    min-height: 38px;
-    padding: 0 10px;
-  }
-
   .hero {
     padding-top: 84px;
   }
@@ -524,13 +737,48 @@ a {
     min-height: auto;
   }
 
-  .stage__article {
+  .stage__article,
+  .stage__anatomy {
     min-height: auto;
     gap: 22px;
   }
 
-  .stage__article-grid {
+  .stage__article-grid,
+  .stage__anatomy-grid {
     grid-template-columns: 1fr;
+  }
+
+  .guitar-diagram {
+    min-height: 700px;
+  }
+
+  .guitar-diagram__svg {
+    width: min(100%, 304px);
+  }
+
+  .guitar-diagram__callout--head {
+    top: 68px;
+    left: 220px;
+  }
+
+  .guitar-diagram__callout--neck {
+    top: 212px;
+    left: 228px;
+  }
+
+  .guitar-diagram__callout--body {
+    top: 356px;
+    left: 232px;
+  }
+
+  .guitar-diagram__callout--hole {
+    top: 500px;
+    left: 220px;
+  }
+
+  .guitar-diagram__callout--bridge {
+    top: 628px;
+    left: 184px;
   }
 
   .stage__empty {
@@ -587,17 +835,6 @@ a {
     padding: 10px 12px;
   }
 
-  .site-header__nav {
-    gap: 4px;
-  }
-
-  .site-header__nav a,
-.site-header__nav button {
-    min-width: 34px;
-    min-height: 34px;
-    padding: 0 8px;
-  }
-
   .stage {
     min-height: 56vh;
     padding: 20px;
@@ -620,14 +857,75 @@ a {
     margin-top: 16px;
   }
 
-  .stage__article h2 {
+  .stage__article h2,
+  .stage__anatomy-intro h2 {
     max-width: none;
     font-size: clamp(2.1rem, 12vw, 3.4rem);
   }
 
-  .stage__article-card {
+  .stage__article-card,
+  .stage__diagram-card {
     padding: 18px;
     border-radius: 22px;
+  }
+
+  .guitar-diagram {
+    min-height: 620px;
+  }
+
+  .guitar-diagram__svg {
+    width: min(100%, 258px);
+  }
+
+  .guitar-diagram__callout {
+    max-width: 160px;
+    padding: 9px 12px;
+    font-size: 0.82rem;
+  }
+
+  .guitar-diagram__callout--head {
+    top: 62px;
+    left: 158px;
+  }
+
+  .guitar-diagram__callout--head::after {
+    width: 42px;
+  }
+
+  .guitar-diagram__callout--neck {
+    top: 186px;
+    left: 164px;
+  }
+
+  .guitar-diagram__callout--neck::after {
+    width: 58px;
+  }
+
+  .guitar-diagram__callout--body {
+    top: 314px;
+    left: 164px;
+  }
+
+  .guitar-diagram__callout--body::after {
+    width: 64px;
+  }
+
+  .guitar-diagram__callout--hole {
+    top: 432px;
+    left: 154px;
+  }
+
+  .guitar-diagram__callout--hole::after {
+    width: 50px;
+  }
+
+  .guitar-diagram__callout--bridge {
+    top: 548px;
+    left: 126px;
+  }
+
+  .guitar-diagram__callout--bridge::after {
+    width: 46px;
   }
 
   .stage-slider__viewport {
