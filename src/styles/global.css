@@ -568,6 +568,82 @@ a {
   line-height: 1.75;
 }
 
+.stage__types {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 28px;
+  min-height: calc(100vh - 294px);
+  margin-top: 22px;
+}
+
+.stage__types-intro {
+  display: grid;
+  gap: 14px;
+}
+
+.stage__types-intro h2 {
+  margin: 0;
+  max-width: 10ch;
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.stage__types-intro p {
+  max-width: 56rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.stage__types-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.stage__type-card {
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.54), rgba(255, 249, 241, 0.76)),
+    radial-gradient(circle at top right, rgba(122, 154, 184, 0.12), transparent 32%);
+  backdrop-filter: blur(10px);
+}
+
+.stage__type-accent {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(51, 74, 99, 0.1);
+  color: var(--night);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stage__type-card h3 {
+  margin: 0;
+  font-size: 1.28rem;
+}
+
+.stage__type-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.stage__types-summary {
+  max-width: 720px;
+}
+
 .stage-slider {
   display: grid;
   gap: 22px;
@@ -738,13 +814,15 @@ a {
   }
 
   .stage__article,
-  .stage__anatomy {
+  .stage__anatomy,
+  .stage__types {
     min-height: auto;
     gap: 22px;
   }
 
   .stage__article-grid,
-  .stage__anatomy-grid {
+  .stage__anatomy-grid,
+  .stage__types-grid {
     grid-template-columns: 1fr;
   }
 
@@ -858,13 +936,15 @@ a {
   }
 
   .stage__article h2,
-  .stage__anatomy-intro h2 {
+  .stage__anatomy-intro h2,
+  .stage__types-intro h2 {
     max-width: none;
     font-size: clamp(2.1rem, 12vw, 3.4rem);
   }
 
   .stage__article-card,
-  .stage__diagram-card {
+  .stage__diagram-card,
+  .stage__type-card {
     padding: 18px;
     border-radius: 22px;
   }

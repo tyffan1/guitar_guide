@@ -1,5 +1,5 @@
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const sections = [
   { id: "block-1", label: "01", tone: "sun" },
@@ -80,6 +80,37 @@ const copy = {
     "Струна начинает вибрировать после щипка.",
     "Подставка передаёт колебания на верхнюю деку.",
     "Корпус усиливает резонанс и делает звук насыщеннее."
+  ],
+  guitarTypesLabel: "Виды гитар",
+  guitarTypesTitle: "Какие бывают гитары",
+  guitarTypesLead:
+    "Гитары различаются по конструкции, звучанию и задачам. Одни подходят для первого обучения и игры дома, другие лучше раскрываются на сцене, в группе или в студии.",
+  guitarTypes: [
+    {
+      title: "Классическая",
+      accent: "Нейлоновые струны",
+      text: "Мягкое, тёплое звучание и широкий гриф. Часто именно с неё начинают обучение, особенно если хотят играть соло, этюды и академическую музыку."
+    },
+    {
+      title: "Акустическая",
+      accent: "Металлические струны",
+      text: "Звучит ярче и громче, хорошо подходит для аккомпанемента, песен под голос, дворовой игры и современных акустических аранжировок."
+    },
+    {
+      title: "Электрогитара",
+      accent: "Звукосниматели и усилитель",
+      text: "Почти не раскрывается без подключения, зато даёт большой выбор тембров, эффектов и техники. Часто используется в роке, блюзе, поп- и метал-музыке."
+    },
+    {
+      title: "Бас-гитара",
+      accent: "Низкий диапазон",
+      text: "Отвечает за ритмическую и гармоническую опору группы. У неё обычно 4 струны и длиннее мензура, а партия строит фундамент всего трека."
+    }
+  ],
+  guitarTypeHints: [
+    "Для первых шагов часто выбирают классическую или мягкую акустику.",
+    "Для игры в группе и с эффектами чаще берут электрогитару.",
+    "Если нравится держать ритм и низ, присмотрись к бас-гитаре."
   ]
 } as const;
 
@@ -156,6 +187,21 @@ export function Hero() {
       return clamped;
     });
   };
+
+  useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    setCurrentIndex(0);
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
+    requestAnimationFrame(() => {
+      viewportRef.current?.scrollTo({ left: 0, top: 0, behavior: "auto" });
+    });
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (current) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -525,6 +571,33 @@ export function Hero() {
                             </ol>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                  ) : index === 2 ? (
+                    <div className="stage__types">
+                      <div className="stage__types-intro">
+                        <span className="stage__label">{copy.guitarTypesLabel}</span>
+                        <h2>{copy.guitarTypesTitle}</h2>
+                        <p>{copy.guitarTypesLead}</p>
+                      </div>
+
+                      <div className="stage__types-grid">
+                        {copy.guitarTypes.map((item) => (
+                          <article key={item.title} className="stage__type-card">
+                            <span className="stage__type-accent">{item.accent}</span>
+                            <h3>{item.title}</h3>
+                            <p>{item.text}</p>
+                          </article>
+                        ))}
+                      </div>
+
+                      <div className="stage__article-card stage__types-summary">
+                        <h3>Как выбрать</h3>
+                        <ul>
+                          {copy.guitarTypeHints.map((hint) => (
+                            <li key={hint}>{hint}</li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
                   ) : (
