@@ -1,13 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { AccountPanel } from "../components/AccountPanel";
 import { Hero } from "../components/Hero";
 ---
 
 <BaseLayout
   title="Guitar Guide"
-  description="Стартовый шаблон сайта на Astro, React и Framer Motion"
+  description={"Guitar Guide \u0441 \u0441\u0438\u0441\u0442\u0435\u043c\u043e\u0439 \u0430\u043a\u043a\u0430\u0443\u043d\u0442\u043e\u0432, cookies \u0438 \u0438\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u043c \u0441\u043b\u0430\u0439\u0434\u0435\u0440\u043e\u043c"}
 >
   <main class="page-shell">
+    <AccountPanel client:load />
     <Hero client:load />
   </main>
 </BaseLayout>
